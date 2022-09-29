@@ -4,10 +4,10 @@ import Accordion from './modules/accordion.js';
 import TabNav from './modules/tabnav.js';
 import Modal from './modules/modal.js';
 import ToolTip from './modules/tooltip.js';
-import initDropdownMenu from './modules/dropdownmenu.js';
-import initMenuMobile from './modules/menuMobile.js';
-import initFuncionamento from './modules/funcionamento.js';
 import fetchAnimais from './modules/fetch-animais.js';
+import DropdownMenu from './modules/dropdownmenu.js';
+import MenuMobile from './modules/menuMobile.js';
+import Funcionamento from './modules/funcionamento.js';
 
 const scrollSuave = new ScrollSuave('[data-menu="suave"] a[href^="#"]');
 scrollSuave.init();
@@ -33,7 +33,16 @@ tooltip.init();
 
 const scrollAnima = new ScroolAnima('[data-anime="scroll"]');
 scrollAnima.init();
-initDropdownMenu();
-initMenuMobile();
-initFuncionamento();
+
+const dropdownMenu = new DropdownMenu('[data-dropdown]');
+dropdownMenu.init();
+
+const menuMobile = new MenuMobile(
+  '[data-menu = "button"]',
+  '[data-menu="list"]'
+);
+menuMobile.init();
+
+const funcionamento = new Funcionamento('[data-semana]', 'aberto');
+funcionamento.init();
 fetchAnimais('../../animaisapi.json', '.numeros-grid');
